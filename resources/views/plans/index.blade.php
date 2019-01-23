@@ -18,7 +18,9 @@
                                         <h5>$ {{ number_format($plan->cost, 2) }} monthly</h5>
                                         <h5>{{ $plan->description }}</h5>
 
-                                        <a href="" class="btn btn-outline-dark pull-right">Choose</a>
+                                        @if(!auth()->user()->subscribedToPlan($plan->braintree_plan, 'main'))
+                                            <a href="{{ route('plans.show', $plan->slug) }}" class="btn btn-outline-dark pull-right">Choose</a>
+                                        @endif
                                     </div>
                                 </li>
                             @endforeach
