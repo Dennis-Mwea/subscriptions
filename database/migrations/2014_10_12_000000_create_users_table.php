@@ -8,8 +8,6 @@ class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -20,14 +18,19 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+
+            $table->string('braintree_id')->nullable();
+            $table->string('paypal_email')->nullable();
+            $table->string('card_brand')->nullable();
+            $table->string('card_last_four')->nullable();
+            $table->timestamp('trial_ends_at')->nullable();
+
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {
