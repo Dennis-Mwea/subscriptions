@@ -14,7 +14,7 @@ class PlanController extends Controller
         return view('plans.index', compact('plans'));
     }
 
-    public function show(Plan $plan, Request $requestt)
+    public function show(Plan $plan, Request $request)
     {
         if ($request->user()->subscribedToPlan($plan->braintree_plan, 'main')) {
             return redirect()->route('home')->with('success', 'You have already subscribed the plan');
